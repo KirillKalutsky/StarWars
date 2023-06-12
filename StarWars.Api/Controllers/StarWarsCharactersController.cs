@@ -33,12 +33,12 @@ namespace StarWars.Api.Controllers
         [HttpPatch("StarWars/Characters/{characterId}", Name = "EditStarWarsCharacter")]
         public async Task<IActionResult> EditCharacter(Guid characterId, [FromBody] EditCharacterForm editForm)
         {
-            var character = await context.Get<Character>().ById(characterId).FirstOrDefaultAsync();
+            var character = await context.Get<Character>()
+                .Include(character => character.FilmLinks)
+                .ById(characterId).FirstOrDefaultAsync();
 
             if (character == null)
                 return NotFound();
-
-
 
             await context.EditStarWarsCharacterAsync(character, editForm);
             await context.SaveChangesAsync();

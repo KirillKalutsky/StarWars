@@ -15,6 +15,8 @@ namespace StarWars.Api.Services
             Guid characterId)
         {
             var character = await context.Get<Character>()
+                .Include(character => character.FilmLinks)
+                .ThenInclude(link => link.Film)
                 .ById(characterId)
                 .FirstOrDefaultAsync();
 
@@ -173,7 +175,8 @@ namespace StarWars.Api.Services
                 var deleteFilmIds = currentFilmIds.Where(id => !newFilmIds.Contains(id));
                 var createFilmIds = newFilmIds.Where(id => !currentFilmIds.Contains(id));
 
-                foreach (var deleteFilm in await context.Get<Film>().ByIds(deleteFilmIds).ToListAsync())
+                foreach (var deleteFilm in await context.Get<FilmCharacterLink>()
+                    .ByCharacterId(character.Id).ByFilmIds(deleteFilmIds).ToListAsync())
                     context.Delete(deleteFilm);
 
                 foreach (var createFilmId in createFilmIds)

@@ -18,12 +18,12 @@ namespace Common.DataLayer
 
         public void Delete<TEntity>(TEntity item) where TEntity : class, TIEntity
         {
-            context.Set<TEntity>().Attach(item);
+            context.Set<TEntity>().Remove(item);
         }
 
         public void Attach<TEntity>(TEntity item) where TEntity : class, TIEntity
         {
-            context.Set<TEntity>().Remove(item);
+            context.Set<TEntity>().Attach(item);
         }
 
         public Task SaveChangesAsync()
