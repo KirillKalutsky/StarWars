@@ -1,0 +1,28 @@
+﻿@using StarWars.Api.Client;
+@model (SearchCharacterResultViewModel CharacterModel, SearchCharacterDataViewModel SearchData);
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <a href="@Url.Action("GetCreatePage", "StarWars")" class="elements"><span>Добавить персонажа</span></a>
+</div>
+
+<div>
+    <h1>Каталог персонажей StarWars</h1>
+</div>
+
+<div>
+    <form>
+
+    </form>
+</div>
+
+<div>
+    @foreach(var character in Model.CharacterModel.Characters)
+    {
+        <a href="StarWars/Character/@character.CharacterId">@character.Name - @character.OriginName</a>
+    }
+</div>

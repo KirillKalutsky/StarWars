@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "select2@4.1.0-rc.0",
+      "destination": "wwwroot/lib/select2/",
+      "files": [
+        "dist/css/select2.min.css",
+        "dist/js/select2.min.js"
+      ]
+    },
+    {
+      "library": "ajax@0.0.4",
+      "destination": "wwwroot/lib/ajax/",
+      "files": [
+        "lib/ajax.js"
+      ]
+    }
+  ]
+}
