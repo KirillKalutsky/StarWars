@@ -1,4 +1,4 @@
-﻿using StarWars.Api.Models.Character;
+using StarWars.Api.Models.Character;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

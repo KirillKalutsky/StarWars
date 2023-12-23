@@ -1,4 +1,4 @@
-﻿using StarWars.Api.Models;
+using StarWars.Api.Models;
 using StarWars.Api.Models.Character;
 using Common.DataLayer;
 using Microsoft.EntityFrameworkCore;
